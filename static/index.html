@@ -9,9 +9,8 @@
 </head>
 <body>
 {{range .}}
-<div>
+<div id={{.ID}}>
     <img src={{.Image}} alt=""> <br>
-    ID: {{.ID}} <br>
     Names: {{.Name}} <br>
     Members: 
     {{range $member := .Members}}
