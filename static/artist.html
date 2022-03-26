@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupie Tracker</title>
+    <link rel="stylesheet" href="../static/css/app.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- start of the nav section -->
+    <section class="topnav">
+        <div class="logo">
+            <span>GROUPIE TRACKER</span>
+            <div class="search-container" id="button">
+                <form action="">
+                    <input type="text" placeholder="&#128269 search.." name="search" id="search-id">
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- end of the nav section -->
+
+    <!-- start of the artist section -->
+    <section class="artist-section">
+        <div class="title">Artist</div>
+        <form action="/artists" method="POST">
+            <div class="content">
+                {{range .}}
+                <div class="img">
+                    <button type="submit" value="{{.ID}}">
+                        <img src={{.Image}} alt="">
+                    </button>
+                </div>
+                {{end}}
+            </div>
+        </form>
+    </section>
+    <!-- end of the artist section -->
+
+    <!-- start of the information section -->
+    <section class="about">
+        <div class="title">Information</div>
+
+        <!-- the code bellow need to be replace by the information of the chosen artist automaticaly -->
+        <div class="about-content">
+            <div class="top">
+                <!--the div below is an example size of the image (just for visualisation)-->
+                <div class="img"></div>
+
+                <div style="padding-left:20px">
+                    <div style="font-size:30px ">The Jimi Hendrix Experience</div>
+                    <div style="color: #ff1e1e;font-size:25px">1966</div>
+                    <div><span class="light">First Album:</span> 27-05-1967</div>
+                    <div>Jimi Hendrix <span class="light">|</span> Mitch Mitchell <span class="light">|</span> Noel
+                        Redding<span class="light">|</span> Billy Cox
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- until here -->
+
+    </section>
+    <!-- end of the information section -->
+
+    <!-- start of the footer section -->
+    <section class="footer">
+        <div>Created by: Ricky Adriell, Khaled and Godfrey</div>
+    </section>
+    <!-- end of the footer section -->
+
+    <!-- start of scripting -->
+    <script>
+        var item = document.getElementById("search-id");
+        item.addEventListener("click", ClickSearch);
+        function ClickSearch() { // this function is use to resize the seacrh button when clicked
+            item.setAttribute("style", "width:150px;background-color:aliceblue;")
+        }
+    </script>
+</body>
+
+</html>
