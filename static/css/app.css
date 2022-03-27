@@ -116,8 +116,9 @@ button{
 .about-content .img{
     width: 100px;
     height: 100px;
+    border-radius: 6px;
 }
-.about .img{
+.top img{
     width: 150px;
     height: 150px;
     margin: 0px 0px 0px 0px;

@@ -1,34 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Groupie Tracker</title>
     <link rel="stylesheet" href="css/app.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
+
 <body>
-{{range .}}
-<div id={{.ID}}>
-    <img src={{.Image}} alt=""> <br>
-    Names: {{.Name}} <br>
-    Members: 
-    {{range $member := .Members}}
-        {{$member}}, 
-    {{end}}
-    <br>
-    Creation Date: {{.CreationDate}} <br>
-    First Album: {{.FirstAlbum}} <br>
-    Concerts: <br>
+
+    <!-- start of the nav section -->
+    <section class="topnav">
+        <div class="logo">
+            <span>GROUPIE TRACKER</span>
+            <div class="search-container" id="button">
+                <form action="">
+                    <input type="text" placeholder="&#128269 search.." name="search" id="search-id">
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- end of the nav section -->
+
+    <!-- start of the artist section -->
+    <section class="artist-section">
+        <div class="title">Artist</div>
+        <form action="/artists" method="POST">
+            <div class="content">
+                {{range .}}
+                <div class="img">
+                    <button type="submit" value="{{.ID}}">
+                        <img src={{.Image}} alt="">
+                    </button>
+                </div>
+                {{end}}
+            </div>
+        </form>
+    </section>
+    <!-- end of the artist section -->
+
+    <!-- start of the information section -->
+    <section class="about">
+        <div class="title">Information</div>
+
+        <!-- the code bellow need to be replace by the information of the chosen artist automatically -->
+        
+        <div class="about-content">
+            <div class="top">
+                {{ range $index, $element := . }}
+                <!--the div below is an example size of the image (just for visualization)-->
+                {{ if eq $element.ID 1 }}
+                    <img src={{$element.Image}} alt="">
+
+                <div style="padding-left:20px">
+                    <div style="font-size:30px ">{{$element.Name}}</div>
+                    <div style="color: #ff1e1e;font-size:25px">{{$element.CreationDate}}</div>
+                    <div><span class="light">First Album:</span> {{$element.FirstAlbum}}</div>
+                    <div>
+                        {{range $member := $element.Members}}
+                            {{$member}} <span class="light">|</span>
+                        {{end}}
+                    </div>
+                    Concerts: <br>
     {{ range $key, $value := .Concerts.DatesLocations }}
         {{ $key }}: 
         {{ range $date := $value }} 
-            {{$date}}, 
+            {{$date}}
         {{end}}
         <br>
     {{ end }}
-    <br>
-</div>
-{{end}}
+                </div>
+                    {{else}}
+                    {{end}}
+                {{ end }}
+            </div>
+        </div>
+        <!-- until here -->
+
+    </section>
+    <!-- end of the information section -->
+
+    <!-- start of the footer section -->
+    <section class="footer">
+        <div>Created by: Ricky Adriell, Khalid and Godfrey</div>
+    </section>
+    <!-- end of the footer section -->
+
+    <!-- start of scripting -->
+    <script>
+        var item = document.getElementById("search-id");
+        item.addEventListener("click", ClickSearch);
+        function ClickSearch() { // this function is use to resize the seacrh button when clicked
+            item.setAttribute("style", "width:150px;background-color:aliceblue;")
+        }
+    </script>
 </body>
+
 </html>
