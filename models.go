@@ -12,5 +12,5 @@ type Artist struct {
 }
 
 type Relations struct {
-	DatesLocations map[string][]string `json:"datesLocations`
+	DatesLocations map[string][]string `json:"datesLocations"`
 }
