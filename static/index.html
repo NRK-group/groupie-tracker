@@ -28,17 +28,18 @@
     <!-- start of the artist section -->
     <section class="artist-section">
         <div class="title">Artist</div>
-        <form action="/artists" method="POST">
-            <div class="content">
-                {{range .}}
-                <div class="img">
-                    <button type="submit" value="{{.ID}}">
-                        <img src={{.Image}} alt="">
-                    </button>
-                </div>
-                {{end}}
+        <!-- <form action="/artists" method="POST"> -->
+        <div class="content">
+            {{range .}}
+            <div class="img">
+                <button>
+                    <img src={{.Image}} alt="">
+                    <div class="light">{{.Name}}</div>
+                </button>
             </div>
-        </form>
+            {{end}}
+        </div>
+        <!-- </form> -->
     </section>
     <!-- end of the artist section -->
 
@@ -47,13 +48,13 @@
         <div class="title">Information</div>
 
         <!-- the code bellow need to be replace by the information of the chosen artist automatically -->
-        
+
         <div class="about-content">
+            {{ range $index, $element := . }}
+            {{ if eq $element.ID 3 }}
             <div class="top">
-                {{ range $index, $element := . }}
-                <!--the div below is an example size of the image (just for visualization)-->
-                {{ if eq $element.ID 1 }}
-                    <img src={{$element.Image}} alt="">
+
+                <img src={{$element.Image}} alt="">
 
                 <div style="padding-left:20px">
                     <div style="font-size:30px ">{{$element.Name}}</div>
@@ -61,22 +62,25 @@
                     <div><span class="light">First Album:</span> {{$element.FirstAlbum}}</div>
                     <div>
                         {{range $member := $element.Members}}
-                            {{$member}} <span class="light">|</span>
+                        {{$member}} <span class="light">|</span>
                         {{end}}
                     </div>
-                    Concerts: <br>
-    {{ range $key, $value := .Concerts.DatesLocations }}
-        {{ $key }}: 
-        {{ range $date := $value }} 
-            {{$date}}
-        {{end}}
-        <br>
-    {{ end }}
                 </div>
-                    {{else}}
-                    {{end}}
+
+            </div>
+            <div>
+                Concerts: <br>
+                {{ range $key, $value := .Concerts.DatesLocations }}
+                {{ $key }}:
+                {{ range $date := $value }}
+                {{$date}}
+                {{end}}
+                <br>
                 {{ end }}
             </div>
+            {{else}}
+            {{end}}
+            {{ end }}
         </div>
         <!-- until here -->
 
