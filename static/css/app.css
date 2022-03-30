@@ -73,11 +73,13 @@ button{
 .artist-section{
     min-height: 340px;
     background-color: rgb(18, 18, 18);
-    padding-bottom: 20px;
+    padding: 50px 50px 20px 50px;
+
 }
+
 .artist-section .content{
     width: 90%;
-    max-height: 250px;
+    max-height: 260px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -95,10 +97,11 @@ button{
     border-radius: 8px;
     border: 1px solid gray ;
     transition: all .2s ease-in-out;
+
 }
-/* .artist-section .img img:hover{
-    transform: scale(1.2);
-} */
+.artist-section .img img:hover{
+    opacity: 50%;
+}
 /* end of artist section styling*/
 
 /* information section styling */
@@ -106,13 +109,15 @@ button{
     background-color: rgb(23, 22, 22);
     min-height: 600px;
     /* color: rgb(155, 155, 155); */
+    padding: 0px 50px 0px 50px ;
     color: aliceblue;
 }
-.about .top{
-    display: flex;
-}
 .about-content{
-    padding: 0px 20px 10px 25px;
+    padding: 0px 20px 10px 75px;
+}
+.about-content .top{
+    display: flex;
+    padding: 0px 0px 20px 0px;
 }
 .about-content .img{
     width: 100px;
@@ -120,8 +125,8 @@ button{
     border-radius: 6px;
 }
 .top img{
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     margin: 0px 0px 0px 0px;
 }
 /* end of information section styling */
