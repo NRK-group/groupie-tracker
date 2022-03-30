@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Groupie Tracker</title>
-    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="../static/css/app.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 
@@ -28,18 +28,18 @@
     <!-- start of the artist section -->
     <section class="artist-section">
         <div class="title">Artist</div>
-        <!-- <form action="/artists" method="POST"> -->
-        <div class="content">
-            {{range .}}
-            <div class="img">
-                <button>
-                    <img src={{.Image}} alt="">
-                    <div class="light">{{.Name}}</div>
-                </button>
+        <form action="/" method="POST">
+            <div class="content">
+                {{range .Artists}}
+                <div class="img">
+                    <button type="submit" name="submit" value="{{.ID}}">
+                        <img src={{.Image}} alt="">
+                        <div class="light">{{.Name}}</div>
+                    </button>
+                </div>
+                {{end}}
             </div>
-            {{end}}
-        </div>
-        <!-- </form> -->
+        </form>
     </section>
     <!-- end of the artist section -->
 
@@ -50,37 +50,30 @@
         <!-- the code bellow need to be replace by the information of the chosen artist automatically -->
 
         <div class="about-content">
-            {{ range $index, $element := . }}
-            {{ if eq $element.ID 3 }}
             <div class="top">
-
-                <img src={{$element.Image}} alt="">
-
-                <div style="padding-left:20px">
-                    <div style="font-size:30px ">{{$element.Name}}</div>
-                    <div style="color: #ff1e1e;font-size:25px">{{$element.CreationDate}}</div>
-                    <div><span class="light">First Album:</span> {{$element.FirstAlbum}}</div>
+                <img src="{{.Data.Image}}" alt="">
+                <div style=" padding-left:20px">
+                    <div style="font-size:30px ">
+                    </div>
+                    <div style="color: #ff1e1e;font-size:25px">{{.Data.Name}}</div>
+                    <div><span class="light">First Album:</span>{{.Data.FirstAlbum}} </div>
                     <div>
-                        {{range $member := $element.Members}}
-                        {{$member}} <span class="light">|</span>
+                        {{range .Data.Members}}
+                        <span class="light">|</span>{{.}}<span class="light">|</span>
                         {{end}}
                     </div>
                 </div>
-
             </div>
             <div>
                 Concerts: <br>
-                {{ range $key, $value := .Concerts.DatesLocations }}
+                {{ range $key, $value := .Data.Concerts.DatesLocations }}
                 {{ $key }}:
                 {{ range $date := $value }}
-                {{$date}}
+                {{$date}},
                 {{end}}
                 <br>
                 {{ end }}
             </div>
-            {{else}}
-            {{end}}
-            {{ end }}
         </div>
         <!-- until here -->
 
@@ -99,6 +92,29 @@
         item.addEventListener("click", ClickSearch);
         function ClickSearch() { // this function is use to resize the seacrh button when clicked
             item.setAttribute("style", "width:150px;background-color:aliceblue;")
+        }
+        async function myFunction() {
+            let arg = document.getElementById('input-id').value
+            let banner = document.getElementById('banner-id').value
+            let response = await fetch("http://localhost:8000/artist", {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ Data: "data", banner: "banner" })
+            });
+
+            if (response.ok) {
+                let json = await response.json();
+                x = json.arg;
+                console.log(x)
+                y = json.banner;
+            } else {
+                alert("HTTP-Error: " + response.status);
+            }
+            document.getElementById("output-id").value = x;
+            // document.getElementById("demob").innerHTML = y;
         }
     </script>
 </body>
