@@ -67,6 +67,7 @@ button{
     width: 30px;
     background-color: rgb(21, 14, 14);
 }
+
 /* end of navbar styling */
 
 /* artist section styling */
@@ -106,27 +107,25 @@ button{
 /* -----------------------------------------------------------Navegastiomn Progres Bar ------------------------------------*/
 /* Style the header: fixed position (always stay at the top) */
 .header {
-    /* position: fixed; */
-    /* top: 0; */
-    z-index: 1;
-    width: 100%;
-    background-color: #f1f1f1;
+    position: relative;
+    margin-left: auto;
+    width: 20%;
     }
     
     /* The progress container (grey background) */
     .progress-container {
         width: 100%;
-        height: 8px;
-        background: #ccc;
+        height: 4px;
+        background: #00ff00;
     }
     
     /* The progress bar (scroll indicator) */
     .progress-bar {
-        height: 8px;
-        background: #04AA6D;
+        height: 4px;
+        background: red;
         width: 0%;
     }
-/*---------------------------------------------------------- end of artist section styling----------------------------*/
+/*---------------------------------------------------------- end of artist section styling*/
 
 /* information section styling */
 .about{
