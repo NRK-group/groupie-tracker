@@ -12,6 +12,8 @@ func main() {
 	http.HandleFunc("/", getArtistHandler)
 	cssPath := http.FileServer(http.Dir("./static"))
 	http.Handle("/static/", http.StripPrefix("/static/", cssPath)) // handling the CSS
+	favico := http.FileServer(http.Dir("./favicon_io")) // handling the adress bar icon
+	http.Handle("/favicon_io/", http.StripPrefix("/favicon_io/", favico)) // handling the icon for the adress bar
 	// After defining the server, we "listen and serve" on port 8080
 	// The second argument is the handler
 	http.ListenAndServe(":8000", nil)
