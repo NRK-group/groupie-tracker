@@ -88,9 +88,9 @@ button{
     overflow: auto;
     scroll-behavior: smooth;
 }
-.artist-section .content::-webkit-scrollbar{
-    display: none;
-}
+/* .artist-section .content::-webkit-scrollbar{
+    background-color: #ff1e1e;
+} */
 .artist-section .img img{
     width: 215px;
     height: 215px;
@@ -102,7 +102,31 @@ button{
 .artist-section .img img:hover{
     opacity: 50%;
 }
-/* end of artist section styling*/
+
+/* -----------------------------------------------------------Navegastiomn Progres Bar ------------------------------------*/
+/* Style the header: fixed position (always stay at the top) */
+.header {
+    /* position: fixed; */
+    /* top: 0; */
+    z-index: 1;
+    width: 100%;
+    background-color: #f1f1f1;
+    }
+    
+    /* The progress container (grey background) */
+    .progress-container {
+        width: 100%;
+        height: 8px;
+        background: #ccc;
+    }
+    
+    /* The progress bar (scroll indicator) */
+    .progress-bar {
+        height: 8px;
+        background: #04AA6D;
+        width: 0%;
+    }
+/*---------------------------------------------------------- end of artist section styling----------------------------*/
 
 /* information section styling */
 .about{

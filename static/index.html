@@ -14,11 +14,11 @@
     <link rel="manifest" href="../favicon_io/site.webmanifest">
 
     <link rel="stylesheet" href="../static/css/app.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"> <!-- This  -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <!-- This is for the font  -->
 </head>
 
 <body>
-
     <!-- start of the nav section -->
     <section class="topnav">
         <div class="logo">
@@ -36,6 +36,15 @@
     <section class="artist-section">
         <div class="title">Artist</div>
         <form action="/" method="POST">
+
+            <!-- The section is the HTML for the navigation left to right -->
+            <div class="header">
+                <div class="progress-container">
+                    <div class="progress-bar" id="myBar"></div>
+                </div>
+            </div>
+            <!-- end -->
+
             <div class="content">
                 {{range .Artists}}
                 <div class="img">
@@ -100,29 +109,40 @@
         function ClickSearch() { // this function is use to resize the seacrh button when clicked
             item.setAttribute("style", "width:150px;background-color:aliceblue;")
         }
-        async function myFunction() {
-            let arg = document.getElementById('input-id').value
-            let banner = document.getElementById('banner-id').value
-            let response = await fetch("http://localhost:8000/artist", {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ Data: "data", banner: "banner" })
-            });
-
-            if (response.ok) {
-                let json = await response.json();
-                x = json.arg;
-                console.log(x)
-                y = json.banner;
-            } else {
-                alert("HTTP-Error: " + response.status);
-            }
-            document.getElementById("output-id").value = x;
-            // document.getElementById("demob").innerHTML = y;
+        //The JS
+        // When the user scrolls the page, execute myFunction 
+        window.onscroll = function () { myFunction() };
+        // --------------------------------------------------------the session is going to navigation but currently works top to bottom NOT left to right
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
         }
+// ------------------------------------------------------------------------------
+        // async function myFunction() {
+        //     let arg = document.getElementById('input-id').value
+        //     let banner = document.getElementById('banner-id').value
+        //     let response = await fetch("http://localhost:8000/artist", {
+        //         method: 'POST',
+        //         headers: {
+        //             'Accept': 'application/json',
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify({ Data: "data", banner: "banner" })
+        //     });
+
+        //     if (response.ok) {
+        //         let json = await response.json();
+        //         x = json.arg;
+        //         console.log(x)
+        //         y = json.banner;
+        //     } else {
+        //         alert("HTTP-Error: " + response.status);
+        //     }
+        //     document.getElementById("output-id").value = x;
+        //     // document.getElementById("demob").innerHTML = y;
+        // }
     </script>
 </body>
 
