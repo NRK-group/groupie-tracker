@@ -15,8 +15,7 @@ type Data struct {
 
 func getArtistHandler(w http.ResponseWriter, r *http.Request) {
 	// Get response to the API
-	b := r.FormValue("submit")
-	fmt.Print(b)
+
 	resp, err := http.Get("https://groupietrackers.herokuapp.com/api/artists")
 	if err != nil {
 		fmt.Println(err)
@@ -31,26 +30,35 @@ func getArtistHandler(w http.ResponseWriter, r *http.Request) {
 	if err := json.Unmarshal(body, &Artists); err != nil {
 		fmt.Println("ERR")
 	}
-	for i := range Artists {
-		resp2, err := http.Get(fmt.Sprintf("https://groupietrackers.herokuapp.com/api/relation/%d", Artists[i].ID))
-		if err != nil {
-			fmt.Println(err)
-		}
-		defer resp2.Body.Close()
-		body2, _ := ioutil.ReadAll(resp2.Body)
-		if err := json.Unmarshal(body2, &Artists[i].Concerts); err != nil {
-			fmt.Println("err")
-		}
+
+	//unpacking the relation api
+	resp2, err := http.Get("https://groupietrackers.herokuapp.com/api/relation")
+	if err != nil {
+		fmt.Println(err)
 	}
+	defer resp2.Body.Close()
+	var Relation Relations
+	body2, _ := ioutil.ReadAll(resp2.Body)
+	if err := json.Unmarshal(body2, &Relation); err != nil {
+		fmt.Println("err")
+	}
+
+	// the code below gets the ID of the button that has been clicked and convert it to interger
+	b := r.FormValue("submit")
 	idNum, err := strconv.Atoi(b)
 	if err != nil {
 		idNum = 1
 	}
+
+	// data will be all the information that will be in the inforamtion section
 	data := Artists[idNum-1]
-	i := map[string]interface{}{
+	data.Concerts = Relation.Index[idNum-1] // add the concert from relation api into the data
+
+	info := map[string]interface{}{
 		"Artists": Artists,
 		"Data":    data,
 	}
+
 	t, _ := template.ParseFiles("static/index.html")
-	t.Execute(w, i)
+	t.Execute(w, info)
 }

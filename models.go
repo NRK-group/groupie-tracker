@@ -8,9 +8,11 @@ type Artist struct {
 	Members      []string `json:"members"`
 	CreationDate int      `json:"creationDate"`
 	FirstAlbum   string   `json:"firstAlbum"`
-	Concerts     Relations
+	Concerts     interface{}
 }
 
 type Relations struct {
-	DatesLocations map[string][]string `json:"datesLocations"`
+	Index []struct {
+		DatesLocations map[string][]string `json:"datesLocations"`
+	} `json:"index"`
 }
