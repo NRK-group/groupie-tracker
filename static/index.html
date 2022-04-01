@@ -36,8 +36,7 @@
 
     <!-- start of the artist section -->
     <section class="artist-section">
-        <div class="title">Artist</div>
-        <form action="/" method="POST">
+        <div class="title">Artist
 
             <!-- The section is the HTML for the navigation left to right -->
             <div class="header">
@@ -46,19 +45,23 @@
                 </div>
             </div>
             <!-- end -->
-            <a href="#" class="previous round">&#8249;</a> <!-- Start of next selection buton -->
-            <div class="content" id="artistScroll">
-                {{range .Artists}}
-                <div class="img">
-                    <button type="submit" name="submit" value="{{.ID}}">
-                        <img src={{.Image}} alt="">
-                        <div class="light">{{.Name}}</div>
-                    </button>
-                </div>
-                {{end}}
+        </div>
+        <!-- <form> -->
+        <div class="content" id="artistScroll">
+            {{range .Artists}}
+            <div class="img">
+                <button onclick="lol()" name="submit" value="{{.ID}}" id="{{.ID}}">
+                    <img src={{.Image}} alt="">
+                    <div class="light">{{.Name}}</div>
+                </button>
             </div>
-            <a href="#" class="next round">&#8250;</a> <!-- end of next selection buton -->
-        </form>
+            {{end}}
+        </div>
+        <!-- </form> -->
+        <div class="next-prev">
+            <a href="#1" class="previous round">&#8249;</a> <!-- Start of next selection buton -->
+            <a href="#51" class="next round">&#8250;</a> <!-- end of next selection buton -->
+        </div>
     </section>
     <!-- end of the artist section -->
 
@@ -141,30 +144,11 @@
             var scrolled = (winScroll / width) * 100;
             document.getElementById("myBar").style.width = scrolled + "%";
         }
-// ------------------------------------------------------------------------------
-        // async function myFunction() {
-        //     let arg = document.getElementById('input-id').value
-        //     let banner = document.getElementById('banner-id').value
-        //     let response = await fetch("http://localhost:8000/artist", {
-        //         method: 'POST',
-        //         headers: {
-        //             'Accept': 'application/json',
-        //             'Content-Type': 'application/json'
-        //         },
-        //         body: JSON.stringify({ Data: "data", banner: "banner" })
-        //     });
-
-        //     if (response.ok) {
-        //         let json = await response.json();
-        //         x = json.arg;
-        //         console.log(x)
-        //         y = json.banner;
-        //     } else {
-        //         alert("HTTP-Error: " + response.status);
-        //     }
-        //     document.getElementById("output-id").value = x;
-        //     // document.getElementById("demob").innerHTML = y;
-        // }
+        // ------------------------------------------------------------------------------
+        function lol() {
+            let id = document.getElementsByName("submit")
+            console.log(id)
+        }
     </script>
 </body>
 
