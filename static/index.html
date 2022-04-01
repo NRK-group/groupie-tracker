@@ -13,8 +13,11 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon_io/favicon-16x16.png">
     <link rel="manifest" href="../favicon_io/site.webmanifest">
 
-    <link rel="stylesheet" href="../static/css/app.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"> <!-- This  -->
+    <!-- css -->
+    <link rel="stylesheet" href="/static/css/app.css">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -53,9 +56,6 @@
     <!-- start of the information section -->
     <section class="about">
         <div class="title">Information</div>
-
-        <!-- the code bellow need to be replace by the information of the chosen artist automatically -->
-
         <div class="about-content">
             <div class="top">
                 <img src="{{.Data.Image}}" alt="">
@@ -64,31 +64,51 @@
                     </div>
                     <div style="color: #ff1e1e;font-size:25px">{{.Data.Name}}</div>
                     <div><span class="light">First Album:</span>{{.Data.FirstAlbum}} </div>
+
+                    <!-- member section -->
                     <div>
                         {{range .Data.Members}}
                         <span class="light">|</span>{{.}}<span class="light">|</span>
                         {{end}}
                     </div>
+                    <!-- end of member section -->
+
                 </div>
             </div>
-            <div>
-                Concerts: <br>
-                {{ range $key, $value := .Data.Concerts.DatesLocations }}
-                {{ $key }}:
-                {{ range $date := $value }}
-                {{$date}},
-                {{end}}
-                <br>
-                {{ end }}
+            <div class="bottom">
+
+                <!-- location section -->
+                <div>
+                    Location:
+                </div>
+                <!-- end of location section -->
+
+                <!-- date section -->
+                <div>
+                    Date:
+                </div>
+                <!-- end of date section -->
+
+                <!-- concert section -->
+                <div>
+                    Concerts: <br>
+                    {{ range $key, $value := .Data.Concerts.DatesLocations }}
+                    {{ $key }}:
+                    {{ range $date := $value }}
+                    {{$date}},
+                    {{end}}
+                    <br>
+                    {{ end }}
+                </div>
+                <!-- end of concert section -->
+
             </div>
         </div>
-        <!-- until here -->
-
     </section>
     <!-- end of the information section -->
 
     <!-- start of the footer section -->
-    <section class="footer">
+    <section class=" footer">
         <div>Created by: Ricky Adriell, Khalid and Godfrey</div>
     </section>
     <!-- end of the footer section -->
