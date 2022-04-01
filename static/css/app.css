@@ -2,35 +2,40 @@
     box-sizing: border-box;
 
 }
+
 body {
     margin: 0;
     font-family: 'Bebas Neue', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     scroll-behavior: smooth;
     letter-spacing: 2px;
 }
-button{
+
+button {
     all: unset;
 }
 
 /* reusable styling */
-.title{
+.title {
     /* color: rgb(155, 155, 155); */
     color: aliceblue;
     padding: 20px;
     letter-spacing: 5px;
 }
-.img{
+
+.img {
     min-width: 250px;
     min-height: 250px;
     margin-top: 10px;
     /* background-color: rgb(189, 189, 189); */
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
-.light{
+
+.light {
     color: rgb(155, 155, 155);
 }
+
 /* end of reusable styling */
 
 /* navbar styling */
@@ -38,6 +43,7 @@ button{
     overflow: hidden;
     background-color: rgb(21, 14, 14);
 }
+
 .topnav span {
     float: left;
     color: #ff1e1e;
@@ -47,6 +53,7 @@ button{
     font-family: impact;
     letter-spacing: 2px;
 }
+
 .topnav input[type=text] {
     padding: 6px;
     /* padding-left: 15px; */
@@ -55,29 +62,33 @@ button{
     font-size: 17px;
     border: none;
 }
-.topnav input[placeholder]{
+
+.topnav input[placeholder] {
     font-family: 'Bebas Neue';
     letter-spacing: 1px;
 }
+
 .topnav .search-container {
     float: right;
 }
-.search-container input{
+
+.search-container input {
     border-radius: 10px 10px;
     width: 30px;
     background-color: rgb(21, 14, 14);
 }
+
 /* end of navbar styling */
 
 /* artist section styling */
-.artist-section{
+.artist-section {
     min-height: 340px;
     background-color: rgb(18, 18, 18);
     padding: 50px 50px 20px 50px;
 
 }
 
-.artist-section .content{
+.artist-section .content {
     width: 90%;
     max-height: 260px;
     margin: 0 auto;
@@ -88,57 +99,114 @@ button{
     overflow: auto;
     scroll-behavior: smooth;
 }
-.artist-section .content::-webkit-scrollbar{
-    display: none;
-}
-.artist-section .img img{
+
+/* .artist-section .content::-webkit-scrollbar{
+    background-color: #ff1e1e;
+} */
+.artist-section .img img {
     width: 215px;
     height: 215px;
     border-radius: 8px;
-    border: 1px solid gray ;
+    border: 1px solid gray;
     transition: all .2s ease-in-out;
 
 }
-.artist-section .img img:hover{
+
+.artist-section .img img:hover {
     opacity: 50%;
 }
-/* end of artist section styling*/
 
+/* -----------------------------------------------------------Navegastiomn Progres Bar ------------------------------------*/
+/* Style the header: fixed position (always stay at the top) */
+.header {
+    position: relative;
+    margin-left: auto;
+    width: 20%;
+}
+
+/* The progress container (grey background) */
+.progress-container {
+    width: 100%;
+    height: 4px;
+    background: #00ff00;
+}
+
+/* The progress bar (scroll indicator) */
+.progress-bar {
+    height: 4px;
+    background: red;
+    width: 0%;
+}
+
+/*---------------------------------------------------------- end of artist section styling*/
+/*---------------------------------------------------------- Start Create and control next and Previous button ------------------*/
+a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+}
+
+a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.previous {
+    background-color: #f1f1f1;
+    color: black;
+}
+
+.next {
+    background-color: #04AA6D;
+    color: white;
+}
+
+.round {
+    border-radius: 50%;
+}
+
+/*---------------------------------------------------------- End Create and control next and Previous button ------------------*/
 /* information section styling */
-.about{
+.about {
     background-color: rgb(23, 22, 22);
     min-height: 600px;
     /* color: rgb(155, 155, 155); */
-    padding: 0px 50px 0px 50px ;
+    padding: 0px 50px 0px 50px;
     color: aliceblue;
 }
-.about-content{
+
+.about-content {
     padding: 0px 20px 10px 75px;
 }
-.about-content .top{
+
+.about-content .top {
     display: flex;
     padding: 0px 0px 20px 0px;
 }
-.about-content .img{
+
+.about-content .img {
     width: 100px;
     height: 100px;
     border-radius: 6px;
 }
-.top img{
+
+.top img {
     width: 100px;
     height: 100px;
     margin: 0px 0px 0px 0px;
 }
+
 /* end of information section styling */
 
 /* footer styling*/
-.footer{
+.footer {
     background-color: rgb(21, 14, 14);
     min-height: 200px;
     color: aliceblue;
-    letter-spacing:1px;
+    letter-spacing: 1px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 /* end of footer styling */

@@ -21,7 +21,6 @@
 </head>
 
 <body>
-
     <!-- start of the nav section -->
     <section class="topnav">
         <div class="logo">
@@ -39,7 +38,16 @@
     <section class="artist-section">
         <div class="title">Artist</div>
         <form action="/" method="POST">
-            <div class="content">
+
+            <!-- The section is the HTML for the navigation left to right -->
+            <div class="header">
+                <div class="progress-container">
+                    <div class="progress-bar" id="myBar"></div>
+                </div>
+            </div>
+            <!-- end -->
+            <a href="#" class="previous round">&#8249;</a> <!-- Start of next selection buton -->
+            <div class="content" id="artistScroll">
                 {{range .Artists}}
                 <div class="img">
                     <button type="submit" name="submit" value="{{.ID}}">
@@ -49,6 +57,7 @@
                 </div>
                 {{end}}
             </div>
+            <a href="#" class="next round">&#8250;</a> <!-- end of next selection buton -->
         </form>
     </section>
     <!-- end of the artist section -->
@@ -120,29 +129,42 @@
         function ClickSearch() { // this function is use to resize the seacrh button when clicked
             item.setAttribute("style", "width:150px;background-color:aliceblue;")
         }
-        async function myFunction() {
-            let arg = document.getElementById('input-id').value
-            let banner = document.getElementById('banner-id').value
-            let response = await fetch("http://localhost:8000/artist", {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ Data: "data", banner: "banner" })
-            });
 
-            if (response.ok) {
-                let json = await response.json();
-                x = json.arg;
-                console.log(x)
-                y = json.banner;
-            } else {
-                alert("HTTP-Error: " + response.status);
-            }
-            document.getElementById("output-id").value = x;
-            // document.getElementById("demob").innerHTML = y;
+        // --------------------------------------------------------the session is going to navigation but currently works top to bottom NOT left to right
+        //The JS
+        // When the user scrolls the page, execute myFunction 
+        document.getElementById("artistScroll").onscroll = function () { myFunction() };
+        function myFunction() {
+            document.getElementById("artistScroll").scrollWidth
+            var winScroll = document.getElementById("artistScroll").scrollLeft;
+            var width = document.getElementById("artistScroll").scrollWidth - document.getElementById("artistScroll").clientWidth;
+            var scrolled = (winScroll / width) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
         }
+// ------------------------------------------------------------------------------
+        // async function myFunction() {
+        //     let arg = document.getElementById('input-id').value
+        //     let banner = document.getElementById('banner-id').value
+        //     let response = await fetch("http://localhost:8000/artist", {
+        //         method: 'POST',
+        //         headers: {
+        //             'Accept': 'application/json',
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify({ Data: "data", banner: "banner" })
+        //     });
+
+        //     if (response.ok) {
+        //         let json = await response.json();
+        //         x = json.arg;
+        //         console.log(x)
+        //         y = json.banner;
+        //     } else {
+        //         alert("HTTP-Error: " + response.status);
+        //     }
+        //     document.getElementById("output-id").value = x;
+        //     // document.getElementById("demob").innerHTML = y;
+        // }
     </script>
 </body>
 
