@@ -119,9 +119,11 @@ button {
 }
 
 .artist-section .img img:hover {
-    opacity: 50%;
+    opacity: 80%;
     /* The below actions makes the imag transform in size when mouse hovers over it */
     transform: scale(1.15);
+    background: #ff800a;
+    box-shadow: 10px 6px 4px #6d706c;
     z-index: 2;
 }
 
