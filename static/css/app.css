@@ -146,6 +146,58 @@ button {
 
 /*---------------------------------------------------------- end of artist section styling*/
 /*---------------------------------------------------------- Start Create and control next and Previous button ------------------*/
+
+/* this section controls the flex box for the next and previous butones */
+.next-prev {
+    display: flex;
+    justify-content: center;
+}
+
+/* The below controls the shape of the Previous button */
+.round.previous {
+    border-radius: 50%;
+    position: relative;
+    margin-right: auto;
+}
+
+/* The below section controls the Previouse butone */
+.previous {
+    /* Contols the circle Colour */
+    background-color: #ddd;
+    /* Contols the Arrow inside the circle */
+    color: black;
+}
+
+/* the following controls the on hover action for the Previous buton */
+a:hover.previous {
+    background-color: rgb(20, 97, 19);
+    color: black;
+}
+
+/* The below controls the shape of the Next button */
+.round.next {
+    border-radius: 50%;
+    position: relative;
+    margin-left: auto;
+}
+
+/* The below section controls the Next butone */
+.next {
+    /* Contols the circle Colour */
+    background-color: #ddd;
+    /* Contols the Arrow inside the circle */
+    color: black;
+    /* position: relative;
+    margin-left: auto; */
+}
+
+/* the following controls the on hover action for the next buton */
+a:hover.next {
+    background-color: rgb(139, 10, 10);
+    color: black;
+}
+
+/* the below controls the Hyperlink of the buttons */
 a {
     text-decoration: none;
     display: inline-block;
@@ -153,29 +205,6 @@ a {
     margin: 0px 50px 0px 50px;
 }
 
-a:hover {
-    background-color: #ddd;
-    color: black;
-}
-
-.previous {
-    background-color: #f1f1f1;
-    color: black;
-}
-
-.next {
-    background-color: #ff1e1e;
-    color: white;
-}
-
-.round {
-    border-radius: 50%;
-}
-
-.next-prev {
-    display: flex;
-    justify-content: center;
-}
 
 /*---------------------------------------------------------- End Create and control next and Previous button ------------------*/
 /* information section styling */
