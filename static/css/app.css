@@ -120,6 +120,9 @@ button {
 
 .artist-section .img img:hover {
     opacity: 50%;
+    /* The below actions makes the imag transform in size when mouse hovers over it */
+    transform: scale(1.15);
+    z-index: 2;
 }
 
 /* -----------------------------------------------------------Navegastiomn Progres Bar ------------------------------------*/
