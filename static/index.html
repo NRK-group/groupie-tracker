@@ -111,6 +111,11 @@
 
     <!-- start of scripting -->
     <script>
+        document.getElementById('{{.Data.ID}}').scrollIntoView({
+            behavior: 'smooth',
+            block: 'end',
+            inline: 'start'
+        });
         var item = document.getElementById("search-id");
         item.addEventListener("click", ClickSearch);
         function ClickSearch() { // this function is use to resize the seacrh button when clicked
