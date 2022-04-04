@@ -7,17 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Groupie Tracker</title>
 
+    <!-- css -->
+    <link rel="stylesheet" href="../static/css/app.css"">
+
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="../favicon_io/apple-touch-icon.png">
+    <link rel=" apple-touch-icon" sizes="180x180" href="../favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon_io/favicon-16x16.png">
     <link rel="manifest" href="../favicon_io/site.webmanifest">
 
-    <!-- css -->
-    <link rel="stylesheet" href="/static/css/app.css">
-
     <!-- Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href=" https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -46,21 +46,21 @@
             </div>
             <!-- end -->
         </div>
-        <!-- <form> -->
-        <div class="content" id="artistScroll">
-            {{range .Artists}}
-            <div class="img">
-                <button onclick="lol()" name="submit" value="{{.ID}}" id="{{.ID}}">
-                    <img src={{.Image}} alt="">
-                    <div class="light">{{.Name}}</div>
-                </button>
+        <form action="/" method="POST">
+            <div class="content" id="artistScroll">
+                {{range .Artists}}
+                <div class="img">
+                    <button type="submit" name="artist" value="{{.ID}}" id="{{.ID}}">
+                        <img src={{.Image}} alt="">
+                        <div class="light">{{.Name}}</div>
+                    </button>
+                </div>
+                {{end}}
             </div>
-            {{end}}
-        </div>
-        <!-- </form> -->
+        </form>
         <div class="next-prev">
             <a href="#1" class="previous round">&#8249;</a> <!-- Start of next selection buton -->
-            <a href="#51" class="next round">&#8250;</a> <!-- end of next selection buton -->
+            <a href="#52" class="next round">&#8250;</a> <!-- end of next selection buton -->
         </div>
     </section>
     <!-- end of the artist section -->
@@ -87,34 +87,18 @@
 
                 </div>
             </div>
-            <div class="bottom">
-
-                <!-- location section -->
-                <div>
-                    Location:
-                </div>
-                <!-- end of location section -->
-
-                <!-- date section -->
-                <div>
-                    Date:
-                </div>
-                <!-- end of date section -->
-
-                <!-- concert section -->
-                <div>
-                    Concerts: <br>
-                    {{ range $key, $value := .Data.Concerts.DatesLocations }}
-                    {{ $key }}:
-                    {{ range $date := $value }}
-                    {{$date}},
-                    {{end}}
-                    <br>
-                    {{ end }}
-                </div>
-                <!-- end of concert section -->
-
+            <!-- concert section -->
+            <div>
+                Concerts: <br>
+                {{ range $key, $value := .Data.Concerts.DatesLocations }}
+                {{ $key }}:
+                {{ range $date := $value }}
+                {{$date}},
+                {{end}}
+                <br>
+                {{ end }}
             </div>
+            <!-- end of concert section -->
         </div>
     </section>
     <!-- end of the information section -->
@@ -144,11 +128,8 @@
             var scrolled = (winScroll / width) * 100;
             document.getElementById("myBar").style.width = scrolled + "%";
         }
+
         // ------------------------------------------------------------------------------
-        function lol() {
-            let id = document.getElementsByName("submit")
-            console.log(id)
-        }
     </script>
 </body>
 

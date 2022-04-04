@@ -175,7 +175,8 @@ button {
 
 /* the following controls the on hover action for the Previous buton */
 a:hover.previous {
-    background-color: rgb(20, 97, 19);
+    background-color: #ff1e1e;
+    ;
     color: black;
 }
 
@@ -198,7 +199,7 @@ a:hover.previous {
 
 /* the following controls the on hover action for the next buton */
 a:hover.next {
-    background-color: rgb(139, 10, 10);
+    background-color: #ff1e1e;
     color: black;
 }
 
@@ -240,6 +241,11 @@ a {
     width: 100px;
     height: 100px;
     margin: 0px 0px 0px 0px;
+}
+
+.bottom {
+    display: flex;
+    justify-content: space-around;
 }
 
 /* end of information section styling */
