@@ -59,8 +59,8 @@
             </div>
         </form>
         <div class="next-prev">
-            <a href="#1" class="previous round">&#8249;</a> <!-- Start of next selection buton -->
-            <a href="#52" class="next round">&#8250;</a> <!-- end of next selection buton -->
+            <a onclick="Prev()" class="previous round">&#8249;</a> <!-- Start of next selection buton -->
+            <a onclick="Next()" class="next round">&#8250;</a> <!-- end of next selection buton -->
         </div>
     </section>
     <!-- end of the artist section -->
@@ -135,6 +135,25 @@
         }
 
         // ------------------------------------------------------------------------------
+
+        // Next is a function that will go to the id 52 of the artist
+        function Next() {
+            document.getElementById('52').scrollIntoView({
+                behavior: 'auto',
+                block: 'end',
+                inline: 'start'
+            });
+        }
+        // Prev is a function that will go to the id 1 of the artist
+        function Prev() {
+            let id = i.toString();
+            document.getElementById('1').scrollIntoView({
+                behavior: 'smooth',
+                block: 'end',
+                inline: 'start'
+            });
+
+        }
     </script>
 </body>
 
