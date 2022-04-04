@@ -9,10 +9,6 @@ import (
 	"text/template"
 )
 
-type Data struct {
-	Index interface{}
-}
-
 //GetAPI receive an api url and return the api into []byte.
 //This function will get the url that you give, read it and return it as a []byte
 func GetAPI(url string) []byte {
@@ -39,31 +35,49 @@ func getArtistHandler(w http.ResponseWriter, r *http.Request) {
 	// to simulate a database
 	var Artists []Artist
 	if err := json.Unmarshal(GetAPI(url+"/artists"), &Artists); err != nil {
-		fmt.Println("err")
+		http.Error(w, "500 Internal error", http.StatusInternalServerError)
+		return
 	}
 
 	//unpacking the relation api
 	var Relation Relations
 	if err := json.Unmarshal(GetAPI(url+"/relation"), &Relation); err != nil {
-		fmt.Println("err")
+		http.Error(w, "500 Internal error", http.StatusInternalServerError)
+		return
+	}
+	switch r.Method {
+	case "GET":
+		// data will be all the information that will be in the inforamtion section
+		data := Artists[1]
+		data.Concerts = Relation.Index[1] // add the concert from relation api into the data struct
+
+		info := map[string]interface{}{
+			"Artists": Artists,
+			"Data":    data,
+		}
+
+		t, _ := template.ParseFiles("static/index.html")
+		t.Execute(w, info)
+	case "POST":
+		id := r.FormValue("artist")
+		idNum, err := strconv.Atoi(id)
+		if err != nil {
+			idNum = 1
+		}
+
+		// data will be all the information that will be in the inforamtion section
+		data := Artists[idNum-1]
+		data.Concerts = Relation.Index[idNum-1] // add the concert from relation api into the data struct
+
+		info := map[string]interface{}{
+			"Artists": Artists,
+			"Data":    data,
+		}
+
+		t, _ := template.ParseFiles("static/index.html")
+		t.Execute(w, info)
+	default:
+		http.Error(w, "Bad request", http.StatusBadRequest) // if the request method is not GET or POST
 	}
 
-	// the code below gets the ID of the button that has been clicked and convert it to interger
-	id := r.FormValue("artist")
-	idNum, err := strconv.Atoi(id)
-	if err != nil {
-		idNum = 1
-	}
-
-	// data will be all the information that will be in the inforamtion section
-	data := Artists[idNum-1]
-	data.Concerts = Relation.Index[idNum-1] // add the concert from relation api into the data struct
-
-	info := map[string]interface{}{
-		"Artists": Artists,
-		"Data":    data,
-	}
-
-	t, _ := template.ParseFiles("static/index.html")
-	t.Execute(w, info)
 }
