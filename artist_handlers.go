@@ -48,8 +48,8 @@ func getArtistHandler(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "GET":
 		// data will be all the information that will be in the inforamtion section
-		data := Artists[1]
-		data.Concerts = Relation.Index[1] // add the concert from relation api into the data struct
+		data := Artists[0]
+		data.Concerts = Relation.Index[0] // add the concert from relation api into the data struct
 
 		info := map[string]interface{}{
 			"Artists": Artists,
