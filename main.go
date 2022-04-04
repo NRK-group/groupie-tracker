@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 )
 
@@ -14,5 +15,6 @@ func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", cssPath)) // handling the CSS
 	// After defining the server, we "listen and serve" on port 8000
 	// The second argument is the handler
+	fmt.Printf("Starting server at port 8000\n")
 	http.ListenAndServe(":8000", nil)
 }
