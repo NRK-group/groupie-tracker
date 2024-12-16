@@ -14,7 +14,7 @@ Build a user friendly website where you display the bands info through several d
 - Graphics
 
 Focus on the creation of events/actions and on their visualization
-- The event/action we want you to do is known as a client call to the server (client-server). We can say it is a feature of your choice that needs to trigger an action. This action must communicate with the server in order to receive information, ([request-response])(https://en.wikipedia.org/wiki/Request%E2%80%93response)
+- The event/action we want you to do is known as a client call to the server (client-server). We can say it is a feature of your choice that needs to trigger an action. This action must communicate with the server in order to receive information, [request-response](https://en.wikipedia.org/wiki/Request%E2%80%93response)
 - An event consists in a system that responds to some kind of action triggered by the client, time, or any other factor.
 
 ## Requirements
